@@ -143,25 +143,72 @@ python main.py
 
 ```bash
 ==================================================
-BEGINNER → EXPERT ROADMAP : PYTHON
+            AI POWERED STUDY ASSISTANT            
 ==================================================
 
-BEGINNER : Python Basics
-Purpose : Learn syntax and fundamentals
+Enter Topic to Study: Python
 
-ELEMENTARY : Functions & OOP
-Purpose : Build structured programs
+Generating roadmap...
 
-INTERMEDIATE : Libraries & APIs
-Purpose : Work with real-world projects
+BEGINNER
+Purpose : Learn foundational Python syntax and basic programming constructs.
+Topics :
+• Installing Python & IDE
+• Variables and Data Types and Operators
+• Conditional Statements (if/else)
+• Loops (for/while)
+• Functions
 
-ADVANCED : Frameworks & Optimization
-Purpose : Develop scalable applications
+ELEMENTARY
+Purpose : Understand how to organize code and work with common data structures.
+Topics :
+• Lists, Tuples, Dictionaries, Sets
+• String Manipulation
+• File I/O
+• Modules and Packages
+• Error Handling (try-except)
 
-EXPERT : System Design & AI Integration
-Purpose : Build production-level systems
+INTERMEDIATE
+Purpose : Develop more robust and efficient Python applications.
+Topics :
+• Object-Oriented Programming (OOP)
+• Decorators and Generators
+• Context Managers
+• Regular Expressions
+• Database Interaction (SQLite)
+
+ADVANCED
+Purpose : Explore advanced concepts for performance, concurrency, and specialized tasks.
+Topics :
+• Concurrency (threading, multiprocessing)
+• Asynchronous Programming (async/await)
+• Metaclasses
+• C Extensions (ctypes, Cython basics)
+• Web Frameworks (e.g., Flask/Django basics)
+
+EXPERT
+Purpose : Master high-performance Python, system-level programming, and contribute to the ecosystem.
+Topics :
+• Performance Optimization
+• Distributed Systems
+• Advanced Design Patterns
+• Contributing to Open Source
+• Building Custom Interpreters/Tools
+
+COMMON MISTAKES
+• Misunderstanding scope (global vs. local)
+• Mutable default arguments in functions
+• Ignoring virtual environments
+• Inefficient use of data structures
+• Not writing tests
+
+================================
+Mastery Flow : Beginner → Expert
+================================
+
+You can now ask follow-up questions.
+Type 'exit' or 'quit' to end.
 ```
-
 ---
 
 
