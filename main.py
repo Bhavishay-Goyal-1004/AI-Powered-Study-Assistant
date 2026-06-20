@@ -2,6 +2,7 @@ from google import genai
 from dotenv import load_dotenv
 import os
 from google.genai import types
+from google.genai.errors import APIError
 
 
 # Loading Environment Variables
@@ -76,15 +77,17 @@ INTERACTION RULES FOR FOLLOW-UP QUESTIONS:
 * Use simple, clear, and practical explanations.
 * DO NOT add unnecessary details or repeat information.
 
-Instructions for Summar: (When i ask about summary)
-* Give 2-3 point tojust give jist of what the user studied or asked questions
-* Word limit 50 words (strcitly)
+Strict Instructions for Summary: (When i ask about summary)
+* Give 2-3 points
+* Include only the main topics/questions discussed by the user.
+* Keep the summary concise and direct.
+* Maximum 50 words total.
+* Do not add explanations or extra context.
+* Use simple language.
+* Focus only on the gist of the conversation/study topics.
 """
 chat = client.chats.create(model="gemini-2.5-flash",
                            config=types.GenerateContentConfig(system_instruction= SYSTEM_PROMPT))
-
-def print_separator():
-    print("=" * 50)
 
 
 def generate_roadmap(chat,topic):
@@ -94,10 +97,10 @@ def generate_roadmap(chat,topic):
 
         response = chat.send_message(f"""User Topic: {topic}""")
 
-        return response.text
+        return response.text if response.text else "No response generated."
 
-    except Exception as e:
-        return f"Error generating roadmap: {e}"
+    except APIError as e:
+        return f"Error generating roadmap {e.code}: {e.message}"
 
 
 
@@ -106,17 +109,17 @@ def ask_followup(chat,question):
     try:
         response = chat.send_message(f"""Follow-up Question: {question}""")
 
-        return response.text
+        return response.text if response.text else "No response generated."
 
-    except Exception as e:
-        return f"Error: {e}"
+    except APIError as e:
+        return f"Error {e.code}: {e.message}"
 
 
 # ==================== MAIN PROGRAM ============================
 
-print_separator()
+print("=" * 50)
 print(f"{'AI POWERED STUDY ASSISTANT':^50}")
-print_separator()
+print("=" * 50)
 
 topic = input("\nEnter Topic to Study: ").strip()
 
@@ -149,14 +152,14 @@ while True:
 
     print(f"\n{answer}")
 
-
-    question_count += 1
+    if answer:
+        question_count += 1
 
 # Session Summary
-print_separator()
+print("=" * 50)
 print(f"{'SESSION SUMMARY':^50}")
-print_separator()
-summary= chat.send_message("Give Summary")
+print("=" * 50)
+summary= chat.send_message("Give a short session summary according to the summary rules.")
 print(summary.text)
 print(f"\nQuestions Asked : {question_count}")
 
