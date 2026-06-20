@@ -49,10 +49,9 @@ This framing was chosen to make the AI behave like an expert educator who create
 
 ### 2. What format did you specify for the study plan output, and how did you enforce it in the prompt?
 
-The output format was divided into five learning stages:
+The output format was divided into four learning stages:
 
 * Beginner
-* Elementary
 * Intermediate
 * Advanced
 * Expert
@@ -104,7 +103,7 @@ pip install -r requirements.txt
 
 # Required Libraries
 
-```txt
+```text
 google-genai
 python-dotenv
 ```
@@ -141,77 +140,85 @@ python main.py
 
 # Example Output
 
-```bash
+```text
 ==================================================
             AI POWERED STUDY ASSISTANT            
 ==================================================
 
-Enter Topic to Study: Python
+Enter Topic to Study: SQL
 
 Generating roadmap...
 
-BEGINNER
-Purpose : Learn foundational Python syntax and basic programming constructs.
-Topics :
-• Installing Python & IDE
-• Variables and Data Types and Operators
-• Conditional Statements (if/else)
-• Loops (for/while)
-• Functions
+SQL:
 
-ELEMENTARY
-Purpose : Understand how to organize code and work with common data structures.
-Topics :
-• Lists, Tuples, Dictionaries, Sets
-• String Manipulation
-• File I/O
-• Modules and Packages
-• Error Handling (try-except)
+BEGINNER
+Topics:
+• Introduction to Databases — Understand tables, rows, columns, and data types.
+• Basic Querying (SELECT, FROM, WHERE) — Retrieve specific data from tables.
+• Data Manipulation (INSERT, UPDATE, DELETE) — Add, modify, and remove records.
+• Constraints (PRIMARY KEY, FOREIGN KEY) — Enforce data integrity and relationships.
 
 INTERMEDIATE
-Purpose : Develop more robust and efficient Python applications.
-Topics :
-• Object-Oriented Programming (OOP)
-• Decorators and Generators
-• Context Managers
-• Regular Expressions
-• Database Interaction (SQLite)
+Topics:
+• JOIN Operations (INNER, LEFT, RIGHT) — Combine data from multiple tables.
+• Aggregate Functions (COUNT, SUM, AVG) & GROUP BY — Perform calculations on grouped data.
+• Subqueries — Nested queries for complex data retrieval.
+• Ordering & Limiting (ORDER BY, LIMIT/OFFSET) — Sort results and control output size.
 
 ADVANCED
-Purpose : Explore advanced concepts for performance, concurrency, and specialized tasks.
-Topics :
-• Concurrency (threading, multiprocessing)
-• Asynchronous Programming (async/await)
-• Metaclasses
-• C Extensions (ctypes, Cython basics)
-• Web Frameworks (e.g., Flask/Django basics)
+Topics:
+• Window Functions (ROW_NUMBER, RANK) — Perform calculations across a set of table rows related to the current row.
+• Common Table Expressions (CTEs) — Define temporary, named result sets.
+• Indexing & Views — Improve query performance and simplify complex queries.
+• Stored Procedures & Triggers — Automate database tasks and enforce business rules.
 
 EXPERT
-Purpose : Master high-performance Python, system-level programming, and contribute to the ecosystem.
-Topics :
-• Performance Optimization
-• Distributed Systems
-• Advanced Design Patterns
-• Contributing to Open Source
-• Building Custom Interpreters/Tools
+Topics:
+• Database Design & Normalization (1NF, 2NF, 3NF) — Structure databases efficiently to reduce redundancy.
+• Query Optimization & Performance Tuning — Analyze and improve query execution speed.
+• Transactions & ACID Properties — Ensure data integrity and reliability in multi-step operations.
+• Advanced Data Modeling (Star/Snowflake Schema) — Design for analytical and data warehousing needs.
+
+LEARNING ORDER
+Beginner → Intermediate → Advanced → Expert
 
 COMMON MISTAKES
-• Misunderstanding scope (global vs. local)
-• Mutable default arguments in functions
-• Ignoring virtual environments
-• Inefficient use of data structures
-• Not writing tests
-
-================================
-Mastery Flow : Beginner → Expert
-================================
+• Misunderstanding JOIN types.
+• Forgetting to use appropriate indexes.
+• Not using `GROUP BY` correctly with aggregate functions.
 
 You can now ask follow-up questions.
 Type 'exit' or 'quit' to end.
+
+
+Ask Question(or type 'exit'/'quit'): different software & languages for SQL
+
+Different software for SQL refers to Relational Database Management Systems (RDBMS) that use SQL.
+
+*   **RDBMS Software:**
+    *   **PostgreSQL:** Open-source, powerful, feature-rich.
+    *   **MySQL:** Widely used open-source, popular for web applications.
+    *   **Microsoft SQL Server:** Commercial, robust for enterprise solutions.
+    *   **Oracle Database:** Commercial, very powerful, often used in large enterprises.
+    *   **SQLite:** Embedded database, serverless, file-based, simple.
+
+*   **SQL Language:** SQL (Structured Query Language) is a standard. However, each RDBMS implements its own *dialect* of SQL, with minor variations in syntax or added proprietary features (e.g., `LIMIT` vs. `TOP`). The core commands (SELECT, INSERT, etc.) are largely consistent.
+
+Ask Question(or type 'exit'/'quit'): exit
+==================================================
+                 SESSION SUMMARY                  
+==================================================
+Session Summary:
+*   SQL learning roadmap (Beginner to Expert).
+*   Explained different SQL software (RDBMS) and language dialects.
+
+Questions Asked : 1
+
+Thank you for using AI Study Assistant!
 ```
 ---
 
 
 # Author
 
-Developed using Python and Gemini AI.
+Bhavishay Goyal
