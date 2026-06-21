@@ -116,51 +116,54 @@ def ask_followup(chat,question):
 
 
 # ==================== MAIN PROGRAM ============================
+def main():
+    print("=" * 50)
+    print(f"{'AI POWERED STUDY ASSISTANT':^50}")
+    print("=" * 50)
 
-print("=" * 50)
-print(f"{'AI POWERED STUDY ASSISTANT':^50}")
-print("=" * 50)
+    topic = input("\nEnter Topic to Study: ").strip()
 
-topic = input("\nEnter Topic to Study: ").strip()
-
-if not topic:
-    print("Topic cannot be empty!")
-    exit()
-
-
-roadmap = generate_roadmap(chat,topic)
-
-print(f"\n{roadmap}")
+    if not topic:
+        print("Topic cannot be empty!")
+        exit()
 
 
-print("\nYou can now ask follow-up questions.")
-print("Type 'exit' or 'quit' to end.\n")
+    roadmap = generate_roadmap(chat,topic)
 
-question_count = 0
+    print(f"\n{roadmap}")
 
-while True:
 
-    user_input = input("\nAsk Question(or type 'exit'/'quit'): ").strip()
+    print("\nYou can now ask follow-up questions.")
+    print("Type 'exit' or 'quit' to end.\n")
 
-    if not user_input:
-        continue
+    question_count = 0
 
-    if user_input.lower() in ["exit", "quit"]:
-        break
+    while True:
 
-    answer = ask_followup(chat,user_input)
+        user_input = input("\nAsk Question(or type 'exit'/'quit'): ").strip()
 
-    print(f"\n{answer}")
+        if not user_input:
+            continue
 
-    if answer:
-        question_count += 1
+        if user_input.lower() in ["exit", "quit"]:
+            break
 
-# Session Summary
-print("=" * 50)
-print(f"{'SESSION SUMMARY':^50}")
-print("=" * 50)
-summary= chat.send_message("Give a short session summary according to the summary rules.")
-print(summary.text)
-print(f"\nQuestions Asked : {question_count}")
+        answer = ask_followup(chat,user_input)
 
-print("\nThank you for using AI Study Assistant!")
+        print(f"\n{answer}")
+
+        if answer:
+            question_count += 1
+
+    # Session Summary
+    print("=" * 50)
+    print(f"{'SESSION SUMMARY':^50}")
+    print("=" * 50)
+    summary= chat.send_message("Give a short session summary according to the summary rules.")
+    print(summary.text)
+    print(f"\nQuestions Asked : {question_count}")
+
+    print("\nThank you for using AI Study Assistant!")
+
+if __name__ == "__main__":
+    main()
